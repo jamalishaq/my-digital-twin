@@ -1,0 +1,20 @@
+[
+  {
+    "name": "My Digital Twin",
+    "description": "An AI-powered chatbot that represents me on my personal website. Visitors can have a natural conversation with it to learn about my background, skills, experience, and projects — as if they were chatting with me directly.",
+    "role": "Sole developer — designed and built end-to-end",
+    "type": "personal",
+    "stack": ["Python", "FastAPI", "Next.js", "TypeScript", "Tailwind CSS", "OpenAI API"],
+    "infrastructure": "Vercel for both the Python serverless backend and Next.js frontend",
+    "highlights": [
+      "System prompt is dynamically assembled from structured personal data (LinkedIn PDF, JSON facts, plain-text notes) so the twin stays accurate without touching code",
+      "In-memory session management supports multi-turn conversation across a visit",
+      "FastAPI backend deployed as a serverless Python function on Vercel with full CORS and routing config",
+      "Originally built with AWS Lambda, API Gateway, S3, CloudFront, and Terraform; later simplified to a pure Vercel deployment"
+    ],
+    "period": "2025",
+    "status": "active",
+    "url": null,
+    "repo": "https://github.com/jamalishaq/my-digital-twin"
+  }
+]

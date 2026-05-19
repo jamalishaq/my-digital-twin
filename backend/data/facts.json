@@ -2,7 +2,19 @@
   "full_name": "Jamal Ishaq",
   "name": "Jamal",
   "current_role": "Software Engineer",
+  "years_of_experience": 5,
   "location": "Lagos, Nigeria",
-  "email": "jamal.ishaq@example.com",
-  "linkedin": "linkedin.com/in/jamalishaq"
+  "email": "toyinjamal@gmail.com",
+  "linkedin": "https://linkedin.com/in/ishaq-jamal",
+  "github": "github.com/jamalishaq",
+  "focus": "AI-powered applications and scalable full-stack systems",
+  "skills": {
+    "languages": ["Python", "TypeScript", "JavaScript"],
+    "frameworks": ["FastAPI", "Next.js", "React"],
+    "ai_and_ml": ["OpenAI API", "AWS Bedrock", "Prompt Engineering"],
+    "cloud": ["AWS", "Vercel"],
+    "infrastructure": ["Terraform", "Docker", "GitHub Actions"],
+    "tools": ["Git", "REST APIs"]
+  },
+  "open_to": ["Full-time roles", "Freelance projects", "AI and full-stack consulting", "Remote opportunities"]
 }
