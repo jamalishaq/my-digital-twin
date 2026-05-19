@@ -14,7 +14,49 @@
     ],
     "period": "2025",
     "status": "active",
-    "url": null,
+    "url": "https://jamalishaq.dev",
     "repo": "https://github.com/jamalishaq/my-digital-twin"
-  }
+  },
+  {
+  "name": "Cognis",
+  "description": "An AI-powered incident intelligence platform that sits between alerting tools and on-call engineers. When an alert fires, Cognis intercepts it, runs it through a RAG-augmented tool-calling agent that retrieves relevant runbooks and investigates live signals, and delivers a structured incident brief to the engineer — reducing mean time to resolution.",
+  "role": "Sole developer — designed and built end-to-end",
+  "type": "personal",
+  "stack": ["Python", "FastAPI", "React", "TypeScript", "Tailwind CSS", "Shadcn/ui", "AWS Bedrock", "Claude Sonnet 4.6", "Claude Haiku 4.5", "Cohere Embed v4", "Cohere Rerank 3.5"],
+  "infrastructure": "ECS Fargate for the FastAPI backend, S3 for the React frontend, DynamoDB for storage, S3 Vectors for the vector index, SQS and Lambda for async notifications and corpus ingestion, all on AWS",
+  "highlights": [
+    "Multi-stage AI pipeline: alert normalisation (Grafana, PagerDuty, generic) → triage classifier → retrieve-then-rerank RAG (S3 Vectors + Cohere Rerank 3.5) → tool-calling reasoning agent → LLM-as-judge quality evaluation",
+    "Reasoning agent uses Claude Sonnet 4.6 with four tools — get_metrics, get_deployment_history, search_incident_history, get_service_dependencies — to actively investigate incidents rather than reason from static context alone",
+    "RAG pipeline retrieves top 20 candidates via vector similarity then reranks to top 5 using Cohere Rerank 3.5 before passing context to the agent",
+    "LLM-as-judge runs asynchronously after every analysis, scoring groundedness, completeness, and actionability — scores stored internally for observability without being exposed to engineers",
+    "Extensible provider pattern using abstract base classes — new notification channels (Slack, Teams) and alert sources (Datadog, OpsGenie) added with one new file and zero changes to existing code",
+    "Resolved incidents are automatically re-ingested into the RAG corpus via SQS and Lambda, making the system smarter over time",
+    "Full observability stack: structlog JSON logging with X-Ray trace correlation, AWS X-Ray distributed tracing, Langfuse AI pipeline tracing, and custom EMF metrics for pipeline latency, agent tool calls, and judge quality scores"
+  ],
+  "period": "2025",
+  "status": "active",
+  "url": "http://cognis-dev-frontend.s3-website-us-east-1.amazonaws.com/mock",
+  "repo": "https://github.com/jamalishaq/cognis"
+},
+{
+  "name": "Meridian Customer Support Agent",
+  "description": "An AI-powered customer support chatbot for Meridian Electronics that handles product discovery, order placement, order history lookup, and customer authentication through natural conversation. Built as a production-ready prototype using a FastAPI MCP agent backend and a streaming React chat interface.",
+  "role": "Sole developer — designed and built end-to-end",
+  "type": "personal",
+  "stack": ["Python", "FastAPI", "React", "TypeScript", "Tailwind CSS", "Shadcn/ui", "OpenRouter", "GPT-4o", "MCP (Model Context Protocol)"],
+  "infrastructure": "ECS EC2 for the FastAPI backend behind an Application Load Balancer, S3 static hosting for the React frontend, AWS Secrets Manager for runtime secrets, all provisioned with Terraform and deployed via GitHub Actions with OIDC",
+  "highlights": [
+    "MCP-powered agent loop — FastAPI backend connects to a remote MCP server over Streamable HTTP, discovers tools at startup, and runs a multi-iteration tool-calling agent loop with SSE streaming to the frontend",
+    "Conversational authentication — agent identifies when a protected action is requested (order history, order placement), prompts for email and 4-digit PIN, calls verify_customer_pin, and stores customer identity in session state for the remainder of the conversation",
+    "Session-aware agent — customer_id and customer_name are injected into the system prompt on every LLM call so the agent never re-asks for credentials and always uses the correct identity when calling order tools",
+    "Order placement flow — agent fetches current product price via get_product, summarises the order with total cost, and waits for explicit customer confirmation before calling create_order, preventing accidental submissions",
+    "Production-grade error handling — unknown tool name validation, jsonschema argument validation before MCP calls, MCP unreachable guard returning HTTP 503, and exponential backoff retry on LLM rate limit errors",
+    "Multi-conversation history — frontend persists multiple conversation threads in localStorage, each with its own session ID, allowing customers to switch between past conversations with full message history restored",
+    "Clean modular architecture — agent loop, tool handling, prompt building, session management, and MCP client each live in isolated modules so any layer can be replaced or extended without touching the others"
+  ],
+  "period": "2025",
+  "status": "active",
+  "url": "http://customer-support-agent-frontend-588106420806.s3-website-us-east-1.amazonaws.com",
+  "repo": "https://github.com/jamalishaq/meridian_customer_support_agent"
+}
 ]

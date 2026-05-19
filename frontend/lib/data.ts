@@ -50,4 +50,26 @@ export const projects: Project[] = [
     url: 'https://www.jamalishaq.dev',
     repo: 'https://github.com/jamalishaq/my-digital-twin',
   },
+  {
+  "name": "Cognis",
+  "description": "An AI-powered incident intelligence platform that sits between alerting tools and on-call engineers. When an alert fires, Cognis intercepts it, runs it through a RAG-augmented tool-calling agent that retrieves relevant runbooks and investigates live signals, and delivers a structured incident brief to the engineer — reducing mean time to resolution.",
+  "role": "Sole developer — designed and built end-to-end",
+  "type": "personal",
+  "stack": ["Python", "FastAPI", "React", "TypeScript", "Tailwind CSS", "Shadcn/ui", "AWS Bedrock", "Claude Sonnet 4.6", "Claude Haiku 4.5", "Cohere Embed v4", "Cohere Rerank 3.5"],
+  "period": "2025",
+  "status": "completed",
+  "url": "http://cognis-dev-frontend.s3-website-us-east-1.amazonaws.com/mock",
+  "repo": "https://github.com/jamalishaq/cognis"
+},
+{
+  "name": "Meridian Customer Support Agent",
+  "description": "An AI-powered customer support chatbot for Meridian Electronics that handles product discovery, order placement, order history lookup, and customer authentication through natural conversation. Built as a production-ready prototype using a FastAPI MCP agent backend and a streaming React chat interface.",
+  "role": "Sole developer — designed and built end-to-end",
+  "type": "personal",
+  "stack": ["Python", "FastAPI", "React", "TypeScript", "Tailwind CSS", "Shadcn/ui", "OpenRouter", "GPT-4o", "MCP (Model Context Protocol)"],
+  "period": "2025",
+  "status": "completed",
+  "url": "http://customer-support-agent-frontend-588106420806.s3-website-us-east-1.amazonaws.com",
+  "repo": "https://github.com/jamalishaq/meridian_customer_support_agent"
+}
 ]
