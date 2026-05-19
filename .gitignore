@@ -1,18 +1,3 @@
-# Terraform
-*.tfstate
-*.tfstate.*
-.terraform/
-.terraform.lock.hcl
-terraform.tfstate.d/
-*.tfvars.secret
-
-# Lambda packages
-lambda-deployment.zip
-lambda-package/
-
-# Memory storage (contains conversation history)
-memory/
-
 # Environment files
 .env
 .env.*
@@ -39,3 +24,6 @@ Thumbs.db
 
 # AWS
 .aws/
+
+.claude
+CLAUDE.*

@@ -23,9 +23,15 @@ export default function Twin() {
     const [hasAvatar, setHasAvatar] = useState(true);
     const messagesEndRef = useRef<HTMLDivElement>(null);
     const inputRef = useRef<HTMLInputElement>(null);
+    const prevMessageCountRef = useRef(0);
 
     useEffect(() => {
-        messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+        if (messages.length === 0) return;
+        // Only scroll when a new message is added, not during streaming updates
+        if (messages.length > prevMessageCountRef.current) {
+            messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+            prevMessageCountRef.current = messages.length;
+        }
     }, [messages]);
 
     const sendMessage = async () => {
@@ -248,7 +254,6 @@ export default function Twin() {
                         placeholder="Ask me anything..."
                         className="flex-1 px-4 py-2 bg-white border border-indigo-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent text-gray-900 placeholder-gray-400"
                         disabled={busy}
-                        autoFocus
                     />
                     <button
                         onClick={sendMessage}
