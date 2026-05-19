@@ -39,17 +39,29 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    name: 'My Digital Twin',
-    description:
-      'An AI-powered chatbot that represents me on my personal website. Visitors can have a natural conversation with it to learn about my background, skills, experience, and projects.',
-    role: 'Sole developer — designed and built end-to-end',
-    type: 'personal',
-    stack: ['Python', 'FastAPI', 'Next.js', 'TypeScript', 'Tailwind CSS', 'OpenAI API'],
-    period: '2025',
-    status: 'active',
-    url: 'https://www.jamalishaq.dev',
-    repo: 'https://github.com/jamalishaq/my-digital-twin',
-  },
+  "name": "Apex — Trade & Risk Intelligence Platform",
+  "description": "An AI-powered incident intelligence platform for trading operations that eliminates 20–45 minutes of manual context gathering per alert. When a trade break or risk limit breach fires, Apex automatically assembles a complete operational briefing — position context, risk state, counterparty history, and regulatory obligations — so the operations team can act in seconds instead of minutes.",
+  "role": "Sole developer — designed and built end-to-end",
+  "type": "personal",
+  "stack": [
+    "Python",
+    "FastAPI",
+    "React",
+    "TypeScript",
+    "Tailwind CSS",
+    "Claude Sonnet 4.6",
+    "Claude Haiku 4.5",
+    "Cohere Embed v4",
+    "Cohere Rerank 3.5",
+    "Amazon Bedrock",
+    "Amazon DynamoDB",
+    "S3 Vectors"
+  ],
+  "period": "2026",
+  "status": "in-progress",
+  "url": "",
+  "repo": ""
+},
   {
   "name": "Cognis",
   "description": "An AI-powered incident intelligence platform that sits between alerting tools and on-call engineers. When an alert fires, Cognis intercepts it, runs it through a RAG-augmented tool-calling agent that retrieves relevant runbooks and investigates live signals, and delivers a structured incident brief to the engineer — reducing mean time to resolution.",
@@ -71,5 +83,17 @@ export const projects: Project[] = [
   "status": "completed",
   "url": "http://customer-support-agent-frontend-588106420806.s3-website-us-east-1.amazonaws.com",
   "repo": "https://github.com/jamalishaq/meridian_customer_support_agent"
-}
+},
+{
+    name: 'My Digital Twin',
+    description:
+      'An AI-powered chatbot that represents me on my personal website. Visitors can have a natural conversation with it to learn about my background, skills, experience, and projects.',
+    role: 'Sole developer — designed and built end-to-end',
+    type: 'personal',
+    stack: ['Python', 'FastAPI', 'Next.js', 'TypeScript', 'Tailwind CSS', 'OpenAI API'],
+    period: '2025',
+    status: 'completed',
+    url: 'https://www.jamalishaq.dev',
+    repo: 'https://github.com/jamalishaq/my-digital-twin',
+  },
 ]

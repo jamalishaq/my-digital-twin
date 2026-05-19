@@ -1,22 +1,38 @@
 [
   {
-    "name": "My Digital Twin",
-    "description": "An AI-powered chatbot that represents me on my personal website. Visitors can have a natural conversation with it to learn about my background, skills, experience, and projects — as if they were chatting with me directly.",
-    "role": "Sole developer — designed and built end-to-end",
-    "type": "personal",
-    "stack": ["Python", "FastAPI", "Next.js", "TypeScript", "Tailwind CSS", "OpenAI API"],
-    "infrastructure": "Vercel for both the Python serverless backend and Next.js frontend",
-    "highlights": [
-      "System prompt is dynamically assembled from structured personal data (LinkedIn PDF, JSON facts, plain-text notes) so the twin stays accurate without touching code",
-      "In-memory session management supports multi-turn conversation across a visit",
-      "FastAPI backend deployed as a serverless Python function on Vercel with full CORS and routing config",
-      "Originally built with AWS Lambda, API Gateway, S3, CloudFront, and Terraform; later simplified to a pure Vercel deployment"
-    ],
-    "period": "2025",
-    "status": "active",
-    "url": "https://jamalishaq.dev",
-    "repo": "https://github.com/jamalishaq/my-digital-twin"
-  },
+  "name": "Apex — Trade & Risk Intelligence Platform",
+  "description": "An AI-powered incident intelligence platform for trading operations that eliminates 20–45 minutes of manual context gathering per alert. When a trade break or risk limit breach fires, Apex automatically assembles a complete operational briefing — position context, risk state, counterparty history, and regulatory obligations — so the operations team can act in seconds instead of minutes.",
+  "role": "Sole developer — designed and built end-to-end",
+  "type": "personal",
+  "stack": [
+    "Python",
+    "FastAPI",
+    "React",
+    "TypeScript",
+    "Tailwind CSS",
+    "Claude Sonnet 4.6",
+    "Claude Haiku 4.5",
+    "Cohere Embed v4",
+    "Cohere Rerank 3.5",
+    "Amazon Bedrock",
+    "Amazon DynamoDB",
+    "S3 Vectors"
+  ],
+  "infrastructure": "ECS Fargate for the FastAPI backend behind an internet-facing Application Load Balancer with path-based IP allowlisting on the alert ingestion endpoint, S3 and CloudFront for the React frontend, DynamoDB for the incident store, S3 Vectors for RAG embeddings, all provisioned with Terraform using S3 native locking and deployed via GitHub Actions with OIDC authentication",
+  "highlights": [
+    "Multi-stage AI pipeline — alert ingestion triggers a background pipeline: a RAG retrieval step pre-loads relevant regulatory context (CSDR, UCITS, MiFID II) into the system prompt before the reasoning agent runs, keeping latency low and retrieval deterministic per alert type",
+    "Reasoning agent with 5 domain tools — Claude Sonnet 4.6 runs an agentic tool-calling loop against get_trade_record, get_position_snapshot, get_risk_limits, get_counterparty_history, and get_regulatory_context, assembling a structured briefing without any manual lookups",
+    "LLM-as-judge quality layer — Claude Haiku 4.5 asynchronously scores every briefing on completeness, regulatory accuracy, actionability, and severity calibration; scores are stored internally in DynamoDB and never surfaced to users, providing a continuous quality signal",
+    "8 realistic synthetic scenarios — trade breaks (price mismatch, settlement failure, cascading), risk limit breaches (position float %, daily VaR, counterparty credit, UCITS sector concentration), and a CME margin call with a hard deadline, each with internally consistent fixture data across trade records, position snapshots, risk limits, and counterparty history",
+    "Financial domain depth — briefings surface T+2 settlement obligations, CSDR Article 7 cash penalties, UCITS Article 52 concentration limits, and MiFID II post-trade reporting requirements, retrieved via Cohere Embed v4 similarity search and Cohere Rerank 3.5 from a chunked regulatory knowledge base",
+    "Fire-and-forget async architecture — POST /analyse returns 202 immediately; the pipeline runs as a FastAPI background task within the ECS process, writes the completed briefing to DynamoDB, and sends an SES notification, with no blocking on the API response",
+    "Demo scenario trigger panel — a React UI panel fires any of the 8 synthetic alert payloads to the live pipeline with one click, showing the briefing appear in the alert feed within seconds without needing external alerting tools connected"
+  ],
+  "period": "2026",
+  "status": "in-progress",
+  "url": "",
+  "repo": ""
+},
   {
   "name": "Cognis",
   "description": "An AI-powered incident intelligence platform that sits between alerting tools and on-call engineers. When an alert fires, Cognis intercepts it, runs it through a RAG-augmented tool-calling agent that retrieves relevant runbooks and investigates live signals, and delivers a structured incident brief to the engineer — reducing mean time to resolution.",
@@ -33,8 +49,8 @@
     "Resolved incidents are automatically re-ingested into the RAG corpus via SQS and Lambda, making the system smarter over time",
     "Full observability stack: structlog JSON logging with X-Ray trace correlation, AWS X-Ray distributed tracing, Langfuse AI pipeline tracing, and custom EMF metrics for pipeline latency, agent tool calls, and judge quality scores"
   ],
-  "period": "2025",
-  "status": "active",
+  "period": "2026",
+  "status": "completed",
   "url": "http://cognis-dev-frontend.s3-website-us-east-1.amazonaws.com/mock",
   "repo": "https://github.com/jamalishaq/cognis"
 },
@@ -54,9 +70,27 @@
     "Multi-conversation history — frontend persists multiple conversation threads in localStorage, each with its own session ID, allowing customers to switch between past conversations with full message history restored",
     "Clean modular architecture — agent loop, tool handling, prompt building, session management, and MCP client each live in isolated modules so any layer can be replaced or extended without touching the others"
   ],
-  "period": "2025",
-  "status": "active",
+  "period": "2026",
+  "status": "completed",
   "url": "http://customer-support-agent-frontend-588106420806.s3-website-us-east-1.amazonaws.com",
   "repo": "https://github.com/jamalishaq/meridian_customer_support_agent"
-}
+},
+  {
+    "name": "My Digital Twin",
+    "description": "An AI-powered chatbot that represents me on my personal website. Visitors can have a natural conversation with it to learn about my background, skills, experience, and projects — as if they were chatting with me directly.",
+    "role": "Sole developer — designed and built end-to-end",
+    "type": "personal",
+    "stack": ["Python", "FastAPI", "Next.js", "TypeScript", "Tailwind CSS", "OpenAI API"],
+    "infrastructure": "Vercel for both the Python serverless backend and Next.js frontend",
+    "highlights": [
+      "System prompt is dynamically assembled from structured personal data (LinkedIn PDF, JSON facts, plain-text notes) so the twin stays accurate without touching code",
+      "In-memory session management supports multi-turn conversation across a visit",
+      "FastAPI backend deployed as a serverless Python function on Vercel with full CORS and routing config",
+      "Originally built with AWS Lambda, API Gateway, S3, CloudFront, and Terraform; later simplified to a pure Vercel deployment"
+    ],
+    "period": "2026",
+    "status": "completed",
+    "url": "https://jamalishaq.dev",
+    "repo": "https://github.com/jamalishaq/my-digital-twin"
+  }
 ]
