@@ -124,7 +124,10 @@ export default function Twin() {
         } finally {
             setIsLoading(false);
             setIsStreaming(false);
-            setTimeout(() => inputRef.current?.focus(), 100);
+            setTimeout(() => {
+                if (navigator.maxTouchPoints > 0) return;
+                inputRef.current?.focus();
+            }, 100);
         }
     };
 
