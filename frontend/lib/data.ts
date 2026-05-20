@@ -60,7 +60,7 @@ export const projects: Project[] = [
   "period": "2026",
   "status": "in-progress",
   "url": "",
-  "repo": ""
+  "repo": "https://github.com/jamalishaq/apex"
 },
   {
   "name": "Cognis",

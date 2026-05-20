@@ -6,10 +6,11 @@ import Projects from '@/components/sections/Projects';
 import ChatSection from '@/components/sections/ChatSection';
 import Footer from '@/components/sections/Footer';
 import FloatingChat from '@/components/FloatingChat';
+import { ChatProvider } from '@/components/ChatContext';
 
 export default function Home() {
   return (
-    <>
+    <ChatProvider>
       <Nav />
       <main>
         <Hero />
@@ -20,6 +21,6 @@ export default function Home() {
       </main>
       <Footer />
       <FloatingChat />
-    </>
+    </ChatProvider>
   );
 }
