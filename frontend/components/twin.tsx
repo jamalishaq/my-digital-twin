@@ -23,7 +23,8 @@ export default function Twin() {
         if (messages.length === 0) return;
         // Only scroll when a new message is added, not during streaming updates
         if (messages.length > prevMessageCountRef.current) {
-            messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+            const container = messagesEndRef.current?.parentElement;
+            if (container) container.scrollTo({ top: container.scrollHeight, behavior: 'smooth' });
             prevMessageCountRef.current = messages.length;
         }
     }, [messages]);
